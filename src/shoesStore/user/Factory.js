@@ -2,9 +2,17 @@ import User from "./User";
 
 export default class Factory {
     static make(raw) {
-        let user = new User(raw.id, raw.username, raw.password);
-        user.createdAt = raw.created_at;
+        let user = new User(undefined, raw.username, raw.password);
+        user.createdAt = new Date();
         user.updatedAt = raw.updated_at;
+        user.deletedAt = raw.deleted_at;
+
+        return user.toJson();
+    }
+    static update(raw) {
+        let user = new User(undefined, raw.username, raw.password);
+        user.createdAt = raw.created_at;
+        user.updatedAt = new Date();
         user.deletedAt = raw.deleted_at;
 
         return user.toJson();

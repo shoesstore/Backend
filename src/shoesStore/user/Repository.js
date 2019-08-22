@@ -16,16 +16,26 @@ export default class Repository{
     }
     async create(object) {
         let user = Factory.make(object);
-        console.log(user);
         let result = await this.dbm.connection()
-            .insert({
-            username: user.username,
-            password: user.password,
-            created_at: new Date()
-        })
+            .insert(user)
             .into(this.tableName)
             .returning(this.returningColumn);
         return Factory.build(result[0]);
     }
 
+    async get( condition = {deleted_at: null}, selection = this.returningColumn) {
+        return this.dbm.connection().select(selection).from(this.tableName).where(condition);
+    }
+
+    async update(condition, object) {
+        const user = Factory.update(object);
+        return this.dbm.connection().update(user).where(condition).from(this.tableName).returning(this.returningColumn);
+    }
+
+    async delete(condition) {
+        return this.dbm.connection().update('deleted_at', new Date()).from(this.tableName).where(condition).returning(this.returningColumn);
+    }
+    async destroy(condition) {
+        return this.dbm.connection().from(this.tableName).where(condition).del()
+    }
 }
