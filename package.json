@@ -4,20 +4,21 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "fusion live"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@fusion.io/core": "^3.0.1-alpha.41",
-    "@fusion.io/integrations-knex": "^3.0.1-alpha.41",
-    "@fusion.io/proton": "^3.0.1-alpha.41",
+    "@fusion.io/core": "^3.0.1-alpha.44",
+    "@fusion.io/integrations-knex": "^3.0.1-alpha.44",
+    "@fusion.io/proton": "^3.0.1-alpha.44",
     "axios": "^0.19.0",
     "dotenv": "^8.1.0",
-    "npm": "^6.11.1",
+    "koa-bodyparser": "^4.2.1",
     "pg": "^7.12.1"
   },
   "devDependencies": {
-    "@fusion.io/cli": "^3.0.1-alpha.41"
+    "@fusion.io/cli": "^3.0.1-alpha.44"
   }
 }
