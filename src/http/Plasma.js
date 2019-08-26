@@ -1,6 +1,7 @@
 import {Plasma as CorePlasma, inject, Kernel, Router} from "@fusion.io/proton";
 import HelloController      from "./HelloController";
-import CollectionController from "./ModelController";
+import CollectionController from "./CollectionController";
+import ModelController      from "./ModelController";
 import BodyParser           from "koa-bodyparser";
 
 export default class Plasma extends CorePlasma {
@@ -12,6 +13,7 @@ export default class Plasma extends CorePlasma {
         kernel.use(router.allowedMethods());
         router.controller(HelloController);
         router.controller(CollectionController);
+        router.controller(ModelController);
 
     }
 }
