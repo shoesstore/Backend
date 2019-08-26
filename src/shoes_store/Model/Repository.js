@@ -5,22 +5,27 @@ import { DatabaseManager } from "@fusion.io/integrations-knex";
 
 
 @singleton(DatabaseManager)
-export default class CollectionRepository {
+export default class ModelProductRepository {
     constructor (database) {
         this.connection = database.connection();
     }
 
     get tableName () {
-        return "collections";
+        return "models";
     }
 
     get returningColumn () {
-        return ["id", "name", "slug", "related_slugs", "created_at", "updated_at", "deleted_at"];
+        return [
+            "id", "name", "collection_id",
+            "price", "status", "slug", "sizes",
+            "colors", "images", "tags", "description",
+            "created_at", "updated_at", "deleted_at"
+        ];
     }
 
     async create (object) {
-        const collection = Factory.make(object);
-        const result = await this.connection.insert(collection).into(this.tableName).returning(this.returningColumn);
+        const model = Factory.make(object);
+        const result = await this.connection.insert(model).into(this.tableName).returning(this.returningColumn);
         return Factory.build(result[0]);
     }
 
@@ -30,8 +35,8 @@ export default class CollectionRepository {
     }
 
     async update (condition, object) {
-        const collection = Factory.make(object);
-        const result = await this.connection.update(collection).where(condition).from(this.tableName).returning(this.returningColumn);
+        const model = Factory.make(object);
+        const result = await this.connection.update(model).where(condition).from(this.tableName).returning(this.returningColumn);
         return Factory.update(result[0]);
     }
 
