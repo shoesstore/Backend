@@ -1,10 +1,16 @@
-export default class User {
+export default class Credential {
     constructor(id, username, password) {
         this.props = {
             id,
             username,
             password
         }
+    }
+    set apiToken (value) {
+        this.props.api_token = value;
+    }
+    get apiToken() {
+        return this.props.api_token;
     }
     set createdAt (value) {
         this.props.created_at = value;

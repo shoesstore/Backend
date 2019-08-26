@@ -1,8 +1,9 @@
-import User from "./User";
+import Credential from "./Credential";
 
 export default class Factory {
     static make(raw) {
-        let user = new User(undefined, raw.username, raw.password);
+        let user = new Credential(undefined, raw.username, raw.password);
+        user.apiToken = raw.api_token;
         user.createdAt = new Date();
         user.updatedAt = raw.updated_at;
         user.deletedAt = raw.deleted_at;
@@ -10,7 +11,8 @@ export default class Factory {
         return user.toJson();
     }
     static update(raw) {
-        let user = new User(undefined, raw.username, raw.password);
+        let user = new Credential(undefined, raw.username, raw.password);
+        user.apiToken = raw.api_token;
         user.createdAt = raw.created_at;
         user.updatedAt = new Date();
         user.deletedAt = raw.deleted_at;
@@ -22,7 +24,8 @@ export default class Factory {
         if (!raw) {
             return null;
         }
-        let user = new User(raw.id, raw.username, raw.password);
+        let user = new Credential(raw.id, raw.username, raw.password);
+        user.apiToken = raw.api_token;
         user.createdAt = raw.created_at;
         user.updatedAt = raw.updated_at;
         user.deletedAt = raw.deleted_at;
