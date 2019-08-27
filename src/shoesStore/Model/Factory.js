@@ -52,6 +52,6 @@ export default class Factory {
         raws.forEach((raw, key, models) => {
             models[key] = this.build(raw);
         });
-        return raws
+        return raws;
     }
 }
