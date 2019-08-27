@@ -3,6 +3,7 @@ import HelloController      from "./HelloController";
 import CollectionController from "./CollectionController";
 import ModelController      from "./ModelController";
 import BodyParser           from "koa-bodyparser";
+import ProductController from "./ProductController";
 
 export default class Plasma extends CorePlasma {
     @inject(Kernel, Router)
@@ -14,6 +15,7 @@ export default class Plasma extends CorePlasma {
         router.controller(HelloController);
         router.controller(CollectionController);
         router.controller(ModelController);
+        router.controller(ProductController);
 
     }
 }
