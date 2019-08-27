@@ -1,7 +1,7 @@
 import { singleton, get, post, put, del, patch } from "@fusion.io/proton";
-import Repository                       from "../shoes_store/Collection/Repository";
-import AllCollections                   from "../shoes_store/GetElements";
-import CollectionById                   from "../shoes_store/GetElementById";
+import Repository                       from "../shoesStore/Collection/Repository";
+import AllCollections                   from "../shoesStore/GetElements";
+import CollectionById                   from "../shoesStore/GetElementById";
 
 @singleton(Repository)
 export default class CollectionController {
