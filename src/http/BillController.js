@@ -1,5 +1,6 @@
 import {singleton, get, post, put, del} from "@fusion.io/proton";
 import Repository from "../shoesStore/bill/Repository";
+import BillForm from "./middlewares/BillForm";
 
 @singleton(Repository)
 export default class BillController {
@@ -35,7 +36,7 @@ export default class BillController {
         }
     }
 
-    @post("/bills")
+    @post("/bills", new BillForm().handle)
     async create (context) {
         const result = await this.repository.create(context.request.body);
         if (!result) {
@@ -47,7 +48,7 @@ export default class BillController {
         }
     }
 
-    @put("/bills/:id")
+    @put("/bills/:id", new BillForm().handle)
     async update (context) {
         const result = await this.repository.update(context.request.body, {
             id: context.params.id,
