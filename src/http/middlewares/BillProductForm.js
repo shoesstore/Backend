@@ -1,8 +1,7 @@
-import {singleton} from "@fusion.io/core";
-const Ajv = require('ajv');
+import {singleton}  from "@fusion.io/core";
+import Ajv          from 'ajv';
 
 const ajv = new Ajv();
-
 @singleton()
 export default class BillProductForm {
     async handle(context, next) {
@@ -25,7 +24,7 @@ export default class BillProductForm {
         if(validate(context.request.body)) {
             await next();
         } else {
-            throw Error("Input Data Is Not A Valid");
+            throw Error("Input data is not in a valid format!");
         }
     }
 }

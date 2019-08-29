@@ -1,8 +1,8 @@
 import { singleton, get, post, put, del, patch }
                   from "@fusion.io/proton";
-import Repository from "../shoesStore/Model/Repository";
-import AllModels  from "../shoesStore/GetElements";
-import ModelById  from "../shoesStore/GetElementById";
+import Repository from "../../shoesStore/model/Repository";
+import AllModels  from "../../shoesStore/GetElements";
+import ModelById  from "../../shoesStore/GetElementById";
 
 @singleton(Repository)
 export default class ModelController {
@@ -57,5 +57,4 @@ export default class ModelController {
         }
         return context.body = {message: "Model Deleted!"}
     }
-
 }

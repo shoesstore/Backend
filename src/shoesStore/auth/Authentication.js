@@ -1,6 +1,6 @@
-import {singleton} from "@fusion.io/core";
-import Repository from "../credential/Repository";
-import BcryptHasherAdapter from "../hasher/hasher";
+import {singleton}          from "@fusion.io/core";
+import Repository           from "../credential/Repository";
+import BcryptHasherAdapter  from "../hasher/hasher";
 
 @singleton( Repository, BcryptHasherAdapter )
 export default class Authentication {
@@ -21,4 +21,4 @@ export default class Authentication {
             }
         }
     }
-    }
+}

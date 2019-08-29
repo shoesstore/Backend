@@ -6,11 +6,11 @@ import {
     del,
     patch
 } from "@fusion.io/proton";
-import Authentication from "../shoesStore/auth/Authentication";
-import Repository from "../shoesStore/credential/Repository";
-import BcryptHasherAdapter from "../shoesStore/hasher/hasher";
-import ProfileRepository from "../shoesStore/profile/ProfileRepository";
-import AuthenCheck from "../shoesStore/middleware/AuthenCheck"
+import Authentication from "../../shoesStore/auth/Authentication";
+import Repository from "../../shoesStore/credential/Repository";
+import BcryptHasherAdapter from "../../shoesStore/hasher/hasher";
+import ProfileRepository from "../../shoesStore/profile/ProfileRepository";
+import AuthenCheck from "../middlewares/authentication/AuthenCheck"
 import jwt from 'jsonwebtoken';
 
 const token = new AuthenCheck();
@@ -25,7 +25,7 @@ export default class UserController  {
     }
     @post('/token', token.check)
     async test_login(context) {
-        context.body = "context.request.header.token";
+        context.body = context.decoded;
     }
     @post('/login')
     async login(context) {

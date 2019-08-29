@@ -1,7 +1,7 @@
 import { singleton, get, post, put, del, patch } from "@fusion.io/proton";
-import Repository                                from "../shoes_store/Products/Repository";
-import AllProducts                               from "../shoes_store/GetElements";
-import ProductsById                              from "../shoes_store/GetElementById";
+import Repository                                from "../../shoesStore/product/Repository";
+import AllProducts                               from "../../shoesStore/GetElements";
+import ProductsById                              from "../../shoesStore/GetElementById";
 
 @singleton(Repository)
 export default class ProductController {
@@ -56,5 +56,4 @@ export default class ProductController {
         }
         return context.body = {message: "Product Deleted!"}
     }
-
 }

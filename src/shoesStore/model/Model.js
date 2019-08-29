@@ -1,34 +1,10 @@
 export default class Model {
-    constructor (id, name, collection_id, price, status, slug, sizes, colors, images, tags, description) {
+    constructor (id, name, collectionId) {
         this.props = {
             id,
             name,
-            collection_id,
-            price,
-            status,
-            slug,
-            sizes,
-            colors,
-            images,
-            tags,
-            description
+            collection_id: collectionId
         }
-    }
-
-    get name () {
-        return this.props.name;
-    }
-
-    set name (value) {
-        this.props.name = value;
-    }
-
-    get collectionId () {
-        return this.props.collection_id;
-    }
-
-    set collectionId (value) {
-        this.props.collection_id = value;
     }
 
     get price () {
@@ -85,13 +61,12 @@ export default class Model {
     set tags (value) {
         this.props.tags = value;
     }
+    set description(value) {
+        this.props.description = value;
+    }
 
     get description () {
         return this.props.description;
-    }
-
-    set description (value) {
-        this.props.description = value;
     }
 
     set createdAt (value) {
