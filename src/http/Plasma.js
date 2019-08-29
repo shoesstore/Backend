@@ -8,6 +8,7 @@ import BillController from "./BillController";
 import BillProductController from "./BillProductController";
 import UserController from "./UserController";
 
+
 export default class Plasma extends CorePlasma {
 
     @inject(Kernel, Router)
