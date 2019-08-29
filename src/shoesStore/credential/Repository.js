@@ -7,11 +7,11 @@ export default class Repository{
     constructor( dbm ) {
         this.dbm = dbm;
     }
-    static get tableName () {
+    get tableName () {
         return "credential";
     }
 
-    static get returningColumn () {
+    get returningColumn () {
         return ["id", "username", "password"];
     }
     async create(object) {

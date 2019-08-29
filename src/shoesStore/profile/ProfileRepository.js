@@ -7,11 +7,11 @@ export default class ProfileRepository {
     constructor( dbm ) {
         this.dbm = dbm.connection();
     }
-    static get tableName () {
+    get tableName () {
         return "profiles";
     }
 
-    static get returningColumn () {
+    get returningColumn () {
         return ["id", "name", "address", "phone", "gender", "avatar", "created_at","email"];
     }
     async create(obj) {
