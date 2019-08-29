@@ -1,7 +1,8 @@
 import { singleton, get, post, put, del, patch } from "@fusion.io/proton";
-import Repository                       from "../shoes_store/Collection/Repository";
-import AllCollections                   from "../shoes_store/GetElements";
-import CollectionById                   from "../shoes_store/GetElementById";
+import Repository                       from "../shoesStore/Collection/Repository";
+import AllCollections                   from "../shoesStore/GetElements";
+import CollectionById                   from "../shoesStore/GetElementById";
+import CollectionForm                   from "./middlewares/CollectionForm";
 
 @singleton(Repository)
 export default class CollectionController {
@@ -23,9 +24,9 @@ export default class CollectionController {
         return context.body = collection;
     }
 
-    @post('/collections')
+    @post('/collections', new CollectionForm().handle)
     async create(context) {
-        context.body = await this.repos.create(context.request.body);
+        return context.body = await this.repos.create(context.collectionForm);
     }
 
     @put('/collections/:id')
