@@ -14,7 +14,7 @@ export default class Factory {
 
     static update (raw) {
         const collection        = new Collection(null, raw.parentId, raw.name, raw.slug);
-        collection.relatedSlugs = raw.relatedSlugs;
+        collection.relatedSlugs = raw.related_slugs;
         collection.updatedAt    = moment().toDate();
         return collection.toJSON();
     }
@@ -25,7 +25,8 @@ export default class Factory {
         }
 
         const collection        = new Collection(raw.id, raw.parentId, raw.name, raw.slug);
-        collection.relatedSlugs = raw.relatedSlugs;
+
+        collection.relatedSlugs = raw.related_slugs;
         collection.createdAt    = raw.created_at;
         collection.updatedAt    = raw.updated_at;
         collection.deletedAt    = raw.deleted_at;
