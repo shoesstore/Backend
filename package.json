@@ -23,6 +23,7 @@
     "moment": "^2.24.0",
     "pg": "^7.12.1"
   },
+  "fusion": "fusion",
   "devDependencies": {
     "@fusion.io/cli": "^3.0.1-alpha.44"
   }
