@@ -25,7 +25,7 @@ export default class UserController  {
     }
     @post('/token', token.check)
     async test_login(context) {
-        context.body = "context.request.header.token";
+        context.body = context.decoded;
     }
     @post('/login')
     async login(context) {
