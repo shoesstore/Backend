@@ -3,6 +3,7 @@ import { singleton, get, post, put, del, patch }
 import Repository from "../../shoesStore/model/Repository";
 import AllModels  from "../../shoesStore/GetElements";
 import ModelById  from "../../shoesStore/GetElementById";
+import ModelForm  from "../middlewares/ModelForm";
 
 @singleton(Repository)
 export default class ModelController {
@@ -24,12 +25,12 @@ export default class ModelController {
         return context.body = Model;
     }
 
-    @post('/models')
+    @post('/models', new ModelForm().handle)
     async create(context) {
         context.body = await this.repos.create(context.request.body);
     }
 
-    @put('/models/:id')
+    @put('/models/:id', new ModelForm().handle)
     async update (context) {
         let updatedModel = await this.repos.update(new ModelById(context.params.id), context.request.body);
         if(!updatedModel) {

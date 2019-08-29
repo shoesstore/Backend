@@ -29,7 +29,7 @@ export default class CollectionController {
         return context.body = await this.repos.create(context.collectionForm);
     }
 
-    @put('/collections/:id')
+    @put('/collections/:id', new CollectionForm().handle)
     async update (context) {
         let updatedCollection = await this.repos.update(new CollectionById(context.params.id), context.request.body);
         if(!updatedCollection) {
