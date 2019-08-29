@@ -1,5 +1,5 @@
 import { singleton} from "@fusion.io/core";
-import jwt from 'jsonwebtoken';
+import jwt          from 'jsonwebtoken';
 
 @singleton()
 export default class AuthenCheck {

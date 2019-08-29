@@ -1,5 +1,5 @@
-import Bill from "./Bill";
-import moment from "moment";
+import Bill     from "./Bill";
+import moment   from "moment";
 
 export default class Factory {
     static make (raw) {

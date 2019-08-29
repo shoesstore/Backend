@@ -54,4 +54,3 @@ export default class Repository {
         return Factory.build(result[0]);
     }
 }
-

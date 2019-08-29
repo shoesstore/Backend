@@ -1,7 +1,7 @@
 import { singleton, get, post, put, del, patch } from "@fusion.io/proton";
-import Repository                       from "../shoesStore/Collection/Repository";
-import AllCollections                   from "../shoesStore/GetElements";
-import CollectionById                   from "../shoesStore/GetElementById";
+import Repository                       from "../../shoesStore/collection/Repository";
+import AllCollections                   from "../../shoesStore/GetElements";
+import CollectionById                   from "../../shoesStore/GetElementById";
 
 @singleton(Repository)
 export default class CollectionController {
@@ -56,5 +56,4 @@ export default class CollectionController {
         }
         return context.body = {message: "Collection Deleted!"}
     }
-
 }

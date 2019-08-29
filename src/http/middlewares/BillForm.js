@@ -1,8 +1,7 @@
-import {singleton} from "@fusion.io/core";
-const Ajv = require('ajv');
+import {singleton}  from "@fusion.io/core";
+import Ajv          from 'ajv';
 
 const ajv = new Ajv();
-
 @singleton()
 export default class BillForm {
     async handle(context, next) {

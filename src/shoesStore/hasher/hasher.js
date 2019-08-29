@@ -12,4 +12,3 @@ export default class BcryptHasherAdapter {
         return bcrypt.compare(value, hashed);
     }
 }
-
