@@ -5,7 +5,18 @@ module.exports = {
     "services": {},
     "authentication": {
         "default": "",
-        "gateways": {}
+        "gateways": {
+            "user.token": {
+                protocol: "proton.token",
+                options: {
+                    privateKey: 'qwertyuiopasdfghjklzxcvbnm123456'
+                }
+            },
+            "local": {
+                protocol: "proton.local",
+                options: {}
+            }
+        }
     },
     "authorization": {
         "default": "",
