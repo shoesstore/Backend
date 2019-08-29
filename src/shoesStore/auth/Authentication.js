@@ -1,6 +1,6 @@
 import {singleton} from "@fusion.io/core";
-import Repository from "../shoesStore/credential/Repository";
-import BcryptHasherAdapter from "../shoesStore/hasher/hasher";
+import Repository from "../credential/Repository";
+import BcryptHasherAdapter from "../hasher/hasher";
 
 @singleton( Repository, BcryptHasherAdapter )
 export default class Authentication {
@@ -15,11 +15,10 @@ export default class Authentication {
         } else {
             let pass = await attemptUser[0].password.toString();
             if (await this.hasher.check(password.toString(), pass)) {
-                console.log("login ok", attemptUser[0].id);
                 return attemptUser[0].id;
             } else {
                 throw new Error("Wrong Pass");
             }
         }
     }
-}
+    }

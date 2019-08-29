@@ -1,8 +1,19 @@
-import {singleton, get, post, put, del, patch, authenticate} from "@fusion.io/proton";
-import Authentication from "../auth/Authentication";
+import {
+    singleton,
+    get,
+    post,
+    put,
+    del,
+    patch
+} from "@fusion.io/proton";
+import Authentication from "../shoesStore/auth/Authentication";
 import Repository from "../shoesStore/credential/Repository";
 import BcryptHasherAdapter from "../shoesStore/hasher/hasher";
 import ProfileRepository from "../shoesStore/profile/ProfileRepository";
+import AuthenCheck from "../shoesStore/middleware/AuthenCheck"
+import jwt from 'jsonwebtoken';
+
+const token = new AuthenCheck();
 
 @singleton( ProfileRepository, Repository, BcryptHasherAdapter, Authentication )
 export default class UserController  {
@@ -12,14 +23,24 @@ export default class UserController  {
         this.hasher = hasher;
         this.auth = auth;
     }
-    @post('/login', authenticate('local'))
+    @post('/token', token.check)
+    async test_login(context) {
+        context.body = "context.request.header.token";
+    }
+    @post('/login')
     async login(context) {
-       await this.auth.attempt(context.request.body.username, context.request.body.password);
+       const result = await this.auth.attempt(context.request.body.username, context.request.body.password);
+       const api_token = await jwt.sign(result, process.env.CONFIG_JWT);
+        await this.repos.updateColumn(result, api_token, 'api_token');
+        context.body = {
+            token: api_token
+        };
     }
-    @get('/login', authenticate('local'))
-    async login_local(context) {
-        context.body = context.identity;
-    }
+
+    // @get('/login', authenticate('local'))
+    // async login_local(context) {
+    //     context.body = context.identity;
+    // }
     @post('/singup')
     async create(context ) {
         context.status = 201;
@@ -84,6 +105,6 @@ export default class UserController  {
 
     @patch('/password/:id')
     async updatePassword(context) {
-        context.body = await this.repos.updatePassword(context.params.id, context.request.body.password);
+        context.body = await this.repos.updateColumn(context.params.id, context.request.body.password, 'password');
     }
 }

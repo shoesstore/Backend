@@ -7,11 +7,11 @@ export default class Repository{
     constructor( dbm ) {
         this.dbm = dbm;
     }
-    get tableName () {
+    static get tableName () {
         return "credential";
     }
 
-    get returningColumn () {
+    static get returningColumn () {
         return ["id", "username", "password"];
     }
     async create(object) {
@@ -43,7 +43,8 @@ export default class Repository{
     async destroy(condition) {
         return this.dbm.connection().from(this.tableName).where(condition).del();
     }
-    async updatePassword(id, pass) {
-        return this.dbm.connection().update('password', pass).from(this.tableName).where('id', id).returning(this.returningColumn);
+
+    async updateColumn(id, data, column) {
+        return this.dbm.connection().update(column, data).from(this.tableName).where('id', id).returning(this.returningColumn);
     }
 }

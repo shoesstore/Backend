@@ -1,6 +1,7 @@
 import Profile from "./profile";
 
 export default class Factory {
+
     static make(raw) {
         const profile = new Profile(undefined, raw.email, raw.credential_id, raw.role);
         profile.address = raw.address;
@@ -9,6 +10,19 @@ export default class Factory {
         profile.avatar = raw.avatar;
         profile.name = raw.name;
         profile.createdAt = new Date();
+
+        return profile.toJson();
+    }
+
+    static update(raw) {
+        const profile = new Profile(undefined, raw.email, raw.credential_id, raw.role);
+        profile.address = raw.address;
+        profile.phone = raw.phone;
+        profile.gender = raw.gender;
+        profile.avatar = raw.avatar;
+        profile.name = raw.name;
+        profile.updatedAt = new Date();
+
         return profile.toJson();
     }
 
