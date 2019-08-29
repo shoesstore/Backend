@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "fusion live"
+    "start": "node node_modules/.bin/fusion live",
+    "fusion": "node node_modules/.bin/fusion app"
+
   },
   "author": "",
   "license": "ISC",
@@ -21,6 +23,7 @@
     "koa-bodyparser": "^4.2.1",
     "pg": "^7.12.1"
   },
+  "fusion": "fusion",
   "devDependencies": {
     "@fusion.io/cli": "^3.0.1-alpha.44"
   }
