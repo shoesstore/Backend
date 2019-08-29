@@ -5,6 +5,7 @@
 
 #fusion framework
 .fusionrc
+package-lock.json
 
 # User-specific stuff
 .idea/**/workspace.xml
