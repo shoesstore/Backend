@@ -25,7 +25,7 @@ export default class CollectionController {
 
     @post('/collections')
     async create(context) {
-        context.body = await this.repos.create(context.request.body);
+        return context.body = await this.repos.create(context.collectionForm);
     }
 
     @put('/collections/:id')
