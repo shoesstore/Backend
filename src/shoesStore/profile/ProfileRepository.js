@@ -25,4 +25,7 @@ export default class ProfileRepository {
     async update(condition, obj) {
         return await this.dbm.update(Factory.update(obj)).where(condition).from(this.tableName).returning(this.returningColumn);
     }
+    async delete(condition) {
+        return await this.dbm.update('deleted_at', new Date()).from(this.tableName).where(condition).returning(this.returningColumn);
+    }
 }
