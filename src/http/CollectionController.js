@@ -4,6 +4,7 @@ import AllCollections                   from "../shoesStore/GetElements";
 import CollectionById                   from "../shoesStore/GetElementById";
 import CollectionForm                   from "./middlewares/CollectionForm";
 
+
 @singleton(Repository)
 export default class CollectionController {
     constructor(repos) {
