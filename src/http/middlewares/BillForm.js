@@ -36,7 +36,7 @@ export default class BillForm {
         if(validate(context.request.body)) {
             await next();
         } else {
-            throw Error("Input Data Is Not A Valid");
+            throw Error("Input data is not in a valid format!");
         }
     }
 }

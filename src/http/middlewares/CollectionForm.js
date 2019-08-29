@@ -1,5 +1,5 @@
 import {singleton} from "@fusion.io/core";
-const Ajv = require('ajv');
+import Ajv         from "ajv";
 
 const ajv = new Ajv();
 
